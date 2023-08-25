@@ -37,7 +37,7 @@ jobs:
           host: 129.146.68.51
           username: ${{ env.USUARIO }}
           password: ${{ env.SENHA }}
-          port: 22
+          port: 19
           source: "*"
           target: "/home/${{ env.USUARIO }}/htdocs/${{ env.USUARIO }}.fake.edu.br/"
 
@@ -47,6 +47,6 @@ jobs:
           host: 129.146.68.51
           username: ${{ env.USUARIO }}
           password: ${{ env.SENHA }}
-          port: 22
+          port: 19
           script: |
              pm2 delete /home/${{ env.USUARIO }}/htdocs/${{ env.USUARIO }}.fake.edu.br/index.js 2> /dev/null || true && cd /home/${{ env.USUARIO }}/htdocs/${{ env.USUARIO }}.fake.edu.br && pm2 start index.js -i 1
