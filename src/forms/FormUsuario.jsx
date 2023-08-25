@@ -27,7 +27,7 @@ export default function FormUsuarios(props) {
         if (form.checkValidity()) {
 
             if (!props.modoEdicao) {
-                fetch(urlBase3 + "/usuarios", {
+                fetch(urlBase3, {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json"
@@ -52,7 +52,7 @@ export default function FormUsuarios(props) {
                     })
             }
             else {
-                fetch(urlBase3 + '/usuarios', {
+                fetch(urlBase3, {
                     method: "PUT",
                     headers: {
                         "Content-Type": "application/json"
