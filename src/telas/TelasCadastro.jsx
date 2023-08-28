@@ -3,7 +3,7 @@ import Pagina from "../templates/pagina";
 import TabelaUsuarios from "../tabelas/TabelaUsuarios";
 import { useState, useEffect } from "react";
 import { Alert, Container } from "react-bootstrap";
-import { urlBase3, urlBase2 } from "../utilitarios/definicoes";
+import { urlBase3 } from "../utilitarios/definicoes";
 import BarraBusca from "../forms/BarraBusca";
 
 export default function TelaCadastro(props) {
