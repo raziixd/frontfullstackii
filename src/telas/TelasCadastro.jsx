@@ -46,7 +46,7 @@ export default function TelaCadastro(props) {
   // }
 
   function deletarUsuario(usuario) {
-    fetch(urlBase3, {
+    fetch(urlBase3 + "/usuarios", {
       method: "DELETE",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(usuario),
@@ -77,7 +77,7 @@ export default function TelaCadastro(props) {
   const [ListaDoacao, setListaDoacao] = useState([]);
 
   useEffect(() => {
-    fetch(urlBase3)
+    fetch(urlBase3 + "/usuarios")
       .then((resposta) => resposta.json())
       .then((dados) => {
         setListaDoacao(dados);
