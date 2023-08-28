@@ -19,7 +19,7 @@ export default function FormUsuarios(props) {
     const form = evento.currentTarget;
     if (form.checkValidity()) {
       if (!props.modoEdicao) {
-        fetch(urlBase3, {
+        fetch(urlBase3 + "/usuarios", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -43,7 +43,7 @@ export default function FormUsuarios(props) {
             window.alert("Erro ao executar a requisição: " + erro.message);
           });
       } else {
-        fetch(urlBase3, {
+        fetch(urlBase3 + "/usuarios", {
           method: "PUT",
           headers: {
             "Content-Type": "application/json",

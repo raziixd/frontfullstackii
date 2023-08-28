@@ -19,7 +19,7 @@ export default function FormDoacao(props) {
         const form = evento.currentTarget;
         if (form.checkValidity()) {
             if (!props.modoEdicao) {
-                fetch(urlBase3, {
+                fetch(urlBase3 + "/doacao", {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -32,7 +32,7 @@ export default function FormDoacao(props) {
                 })
             }
             else {
-                fetch(urlBase3, {
+                fetch(urlBase3 + "/doacao", {
                     method: 'PUT',
                     headers: {
                         'Content-Type': 'application/json',

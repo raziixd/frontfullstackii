@@ -7,7 +7,7 @@ export default function TabelaDoacao(props) {
 
   function filtrar(e) {
     const termoBusca = e.currentTarget.value;
-    fetch(urlBase3, { method: "GET" })
+    fetch(urlBase3 + "/doacao", { method: "GET" })
       .then((resposta) => {
         return resposta.json();
       })
