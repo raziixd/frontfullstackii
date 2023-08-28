@@ -4,7 +4,7 @@ import TabelaUsuarios from "../tabelas/TabelaUsuarios";
 import { useState, useEffect } from "react";
 import { Alert, Container } from "react-bootstrap";
 import { urlBase3 } from "../utilitarios/definicoes";
-import BarraBusca from "../forms/BarraBusca";
+// import BarraBusca from "../forms/BarraBusca";
 
 export default function TelaCadastro(props) {
   const [exibirTabela, setExibirTabela] = useState(true);
@@ -73,16 +73,16 @@ export default function TelaCadastro(props) {
       });
   }, []);
 
-  const [doacaoSelecionado, setDoacaoSelecionado] = useState({});
-  const [ListaDoacao, setListaDoacao] = useState([]);
+  // const [doacaoSelecionado, setDoacaoSelecionado] = useState({});
+  // const [ListaDoacao, setListaDoacao] = useState([]);
 
-  useEffect(() => {
-    fetch(urlBase3 + "/usuarios")
-      .then((resposta) => resposta.json())
-      .then((dados) => {
-        setListaDoacao(dados);
-      });
-  }, []);
+  //   useEffect(() => {
+  //   fetch(urlBase3 + "/usuarios")
+  //     .then((resposta) => resposta.json())
+  //     .then((dados) => {
+  //       setListaDoacao(dados);
+  //     });
+  // }, []);
 
   return (
     <Pagina>
@@ -100,14 +100,14 @@ export default function TelaCadastro(props) {
           />
         ) : (
           <div>
-            <BarraBusca
+            {/* <BarraBusca
               placeHolder={"Informe sua busca"}
               dados={setListaDoacao}
               campoChave={"cpf"}
               campoBusca={"nome"}
               funcaoSelecao={setDoacaoSelecionado}
               valor={""}
-            />
+            /> */}
             <FormUsuarios
               listaUsuarios={usuarios}
               exibirTabela={setExibirTabela}
