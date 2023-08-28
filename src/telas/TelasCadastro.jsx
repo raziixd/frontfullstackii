@@ -59,7 +59,7 @@ export default function TelaCadastro(props) {
   }
 
   useEffect(() => {
-    fetch(urlBase3, {
+    fetch(urlBase3 + "/usuarios", {
       method: "GET",
     })
       .then((resposta) => {
