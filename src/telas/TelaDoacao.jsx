@@ -1,42 +1,35 @@
-import FormUsuarios from "../forms/FormUsuario";
+import FormDoacao from "../forms/FormDoacao";
 import Pagina from "../templates/pagina";
-import TabelaUsuarios from "../tabelas/TabelaUsuarios";
+import TabelaDoacao from "../tabelas/TabelaDoacao";
 import { useState, useEffect } from "react";
 import { Alert, Container } from "react-bootstrap";
-import { urlBase3, urlBase2 } from "../utilitarios/definicoes";
+import { urlBase3} from "../utilitarios/definicoes";
 import BarraBusca from "../forms/BarraBusca";
 
 export default function TelaCadastro(props) {
   const [exibirTabela, setExibirTabela] = useState(true);
-  const [usuarios, setUsuarios] = useState([]);
+  const [doacoes, setDoacoes] = useState([]);
   const [modoEdicao, setModoEdicao] = useState(false);
   const [usuarioEdicao, setUsuarioEdicao] = useState({
+    valorDoado: "",
+    itemDoado: "",
     nome: "",
-    cpf: "",
-    dataNasc: "",
-    email: "",
-    tel: "",
-    sexo: "",
-    cidade: "",
-    uf: "",
-    treinador: "",
-    jogador: "",
   });
 
-  function prepararTela(usuario) {
+  function prepararTela(doacao) {
     setModoEdicao(true);
-    setUsuarioEdicao(usuario);
+    setUsuarioEdicao(doacao);
     setExibirTabela(false);
   }
 
-  // function excluir(usuario){
+  // function excluir(doacao){
 
-  //     fetch(urlBase + '/usuarios',{
+  //     fetch(urlBase + '/doacoes',{
   //         method: "DELETE",
   //         headers: {
   //             "Content-Type":"application/json"
   //         },
-  //         body: JSON.stringify(usuario)
+  //         body: JSON.stringify(doacao)
   //     })
   //     .then((resposta) =>{
   //         window.location.reload()
@@ -45,14 +38,14 @@ export default function TelaCadastro(props) {
 
   // }
 
-  function deletarUsuario(usuario) {
+  function deletarUsuario(doacao) {
     fetch(urlBase3, {
       method: "DELETE",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(usuario),
+      body: JSON.stringify(doacao),
     })
       .then((resposta) => {
-        window.alert("O usuário selecionado foi deletado com sucesso!");
+        window.alert("O item selecionado foi deletado com sucesso!");
         return resposta.json();
       })
       .then(window.location.reload());
@@ -67,7 +60,7 @@ export default function TelaCadastro(props) {
       })
       .then((dados) => {
         if (Array.isArray(dados)) {
-          setUsuarios(dados);
+          setDoacoes(dados);
         } else {
         }
       });
@@ -88,12 +81,12 @@ export default function TelaCadastro(props) {
     <Pagina>
       <Container className="border">
         <Alert variant="success" className="text-center">
-          Cadastro de Jogadores
+          Faça uma doação
         </Alert>
         {exibirTabela ? (
-          <TabelaUsuarios
-            listaUsuarios={usuarios}
-            setUsuarios={setUsuarios}
+          <TabelaDoacao
+            listaDoacoes={doacoes}
+            setDoacoes={setDoacoes}
             exibirTabela={setExibirTabela}
             editar={prepararTela}
             deletar={deletarUsuario}
@@ -108,14 +101,14 @@ export default function TelaCadastro(props) {
               funcaoSelecao={setDoacaoSelecionado}
               valor={""}
             />
-            <FormUsuarios
-              listaUsuarios={usuarios}
+            <FormDoacoes
+              listaDoacoes={doacoes}
               exibirTabela={setExibirTabela}
-              setUsuarios={setUsuarios}
+              setDoacoes={setDoacoes}
               editar={prepararTela}
               modoEdicao={modoEdicao}
               setModoEdicao={setModoEdicao}
-              usuario={usuarioEdicao}
+              doacao={usuarioEdicao}
             />
           </div>
         )}

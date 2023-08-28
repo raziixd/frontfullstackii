@@ -2,21 +2,21 @@
 import { Button, Table, Container, Form, Row, Col } from "react-bootstrap";
 import { urlBase3 } from "../utilitarios/definicoes";
 
-export default function TabelaUsuarios(props) {
-  // const [usuarios, setUsuarios] = useState(props.listaUsuarios)
+export default function TabelaDoacao(props) {
+  // const [usuarios, setDoacaos] = useState(props.listaDoacaos)
 
   function filtrar(e) {
     const termoBusca = e.currentTarget.value;
-    fetch(urlBase3 + "/usuarios", { method: "GET" })
+    fetch(urlBase3, { method: "GET" })
       .then((resposta) => {
         return resposta.json();
       })
-      .then((listaUsuarios) => {
-        if (Array.isArray(listaUsuarios)) {
-          const resultadoBusca = listaUsuarios.filter((usuario) =>
-            usuario.nome.toLowerCase().includes(termoBusca.toLowerCase())
+      .then((listaDoacaos) => {
+        if (Array.isArray(listaDoacaos)) {
+          const resultadoBusca = listaDoacaos.filter((doacao) =>
+            doacao.nome.toLowerCase().includes(termoBusca.toLowerCase())
           );
-          props.setUsuarios(resultadoBusca);
+          props.setDoacaos(resultadoBusca);
         }
       });
   }
@@ -62,37 +62,24 @@ export default function TabelaUsuarios(props) {
         <thead>
           <tr>
             <th>Nome</th>
-            <th>CPF</th>
-            <th>Data Nascimento</th>
-            <th>Email</th>
-            <th>Telefone</th>
-            <th>Sexo</th>
-            <th>Cidade</th>
-            <th>Estado</th>
-            <th>Treinador ?</th>
-            <th>Jogador ?</th>
+            <th>Item Doado</th>
+            <th>Valor Doado</th>
             <th>Ações</th>
           </tr>
         </thead>
         <tbody>
-          {props.listaUsuarios?.map((usuario) => {
+          {props.listaDoacaos?.map((doacao) => {
             return (
-              <tr key={usuario.cpf}>
-                <td>{usuario.nome}</td>
-                <td>{usuario.cpf}</td>
-                <td>{usuario.dataNasc}</td>
-                <td>{usuario.email}</td>
-                <td>{usuario.tel}</td>
-                <td>{usuario.sexo}</td>
-                <td>{usuario.cidade}</td>
-                <td>{usuario.uf}</td>
-                <td>{usuario.treinador}</td>
-                <td>{usuario.jogador}</td>
+              <tr key={doacao.id}>
+                <td>{doacao.id}</td>
+                <td>{doacao.itemDoado}</td>
+                <td>{doacao.valorDoado}</td>
+                <td>{doacao.nome}</td>
                 <td>
                   <Button
                     onClick={() => {
                       if (window.confirm("Deseja excluir?")) {
-                        props.deletar(usuario);
+                        props.deletar(doacao);
                       }
                     }}
                   >
@@ -110,7 +97,7 @@ export default function TabelaUsuarios(props) {
                   <Button
                     onClick={() => {
                       if (window.confirm("Deseja atualizar?")) {
-                        props.editar(usuario);
+                        props.editar(doacao);
                       }
                     }}
                   >
