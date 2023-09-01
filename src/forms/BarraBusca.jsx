@@ -85,7 +85,7 @@ export default function BarraBusca({
       </div>
       <div className="resultado">
         <ul data-resultado>
-          {/* {dadosLista.map((item) => {
+          {dadosLista.map((item) => {
             return (
               <li
                 key={item[campoChave]}
@@ -102,7 +102,7 @@ export default function BarraBusca({
                 {item[campoChave] + " - " + item[campoBusca]}
               </li>
             );
-          })} */}
+          })}
         </ul>
       </div>
     </Container>

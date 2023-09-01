@@ -3,7 +3,7 @@ import Pagina from "../templates/pagina";
 import TabelaUsuarios from "../tabelas/TabelaUsuarios";
 import { useState, useEffect } from "react";
 import { Alert, Container } from "react-bootstrap";
-import { urlBase3 } from "../utilitarios/definicoes";
+import { urlBase2, urlBase3 } from "../utilitarios/definicoes";
 import BarraBusca from "../forms/BarraBusca";
 
 export default function TelaCadastro(props) {
@@ -46,7 +46,7 @@ export default function TelaCadastro(props) {
   // }
 
   function deletarUsuario(usuario) {
-    fetch(urlBase3 + "/usuarios", {
+    fetch(urlBase3, {
       method: "DELETE",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(usuario),
@@ -59,7 +59,7 @@ export default function TelaCadastro(props) {
   }
 
   useEffect(() => {
-    fetch(urlBase3 + "/usuarios", {
+    fetch(urlBase3, {
       method: "GET",
     })
       .then((resposta) => {
@@ -77,7 +77,7 @@ export default function TelaCadastro(props) {
   const [ListaDoacao, setListaDoacao] = useState([]);
 
     useEffect(() => {
-    fetch(urlBase3 + "/doacao")
+    fetch(urlBase2)
       .then((resposta) => resposta.json())
       .then((dados) => {
         setListaDoacao(dados);

@@ -3,7 +3,7 @@ import Pagina from "../templates/pagina";
 import TabelaDoacao from "../tabelas/TabelaDoacao";
 import { useState, useEffect } from "react";
 import { Alert, Container } from "react-bootstrap";
-import { urlBase3} from "../utilitarios/definicoes";
+import { urlBase3, urlBase2} from "../utilitarios/definicoes";
 import BarraBusca from "../forms/BarraBusca";
 
 export default function TelaCadastro(props) {
@@ -39,7 +39,7 @@ export default function TelaCadastro(props) {
   // }
 
   function deletarUsuario(doacao) {
-    fetch(urlBase3, {
+    fetch(urlBase2, {
       method: "DELETE",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(doacao),
@@ -101,7 +101,7 @@ export default function TelaCadastro(props) {
               funcaoSelecao={setDoacaoSelecionado}
               valor={""}
             />
-            <FormDoacoes
+            <FormDoacao
               listaDoacoes={doacoes}
               exibirTabela={setExibirTabela}
               setDoacoes={setDoacoes}
