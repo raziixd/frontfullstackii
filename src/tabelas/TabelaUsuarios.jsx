@@ -7,7 +7,7 @@ export default function TabelaUsuarios(props) {
 
   function filtrar(e) {
     const termoBusca = e.currentTarget.value;
-    fetch(urlBase3 + "/usuarios", { method: "GET" })
+    fetch(urlBase3, { method: "GET" })
       .then((resposta) => {
         return resposta.json();
       })
@@ -33,7 +33,7 @@ export default function TabelaUsuarios(props) {
 
       <Container className=" m-3">
         <Row>
-          <Col md-11>
+          <Col>
             <Form.Control
               type="text"
               id="termoBusca"
@@ -41,7 +41,7 @@ export default function TabelaUsuarios(props) {
               onChange={filtrar}
             />
           </Col>
-          <Col md-1>
+          <Col >
             <Button>
               <svg
                 xmlns="http://www.w3.org/2000/svg"

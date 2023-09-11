@@ -2,7 +2,7 @@ import TelaCadastro from "./telas/TelasCadastro";
 import TelaMenu from "./telas/TelaMenu";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Tela404 from "./telas/tela404";
-import TabelaDoacao from "./tabelas/TabelaDoacao";
+import TelaDoacao from "./telas/TelaDoacao";
 
 function App() {
   return (
@@ -10,7 +10,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/FormUsuario" element={<TelaCadastro />} />
-          <Route path="/Doacao" element={<TabelaDoacao />} />
+          <Route path="/FormDoacao" element={<TelaDoacao />} />
           <Route path="/" element={<TelaMenu />} />
           <Route path="*" element={<Tela404 />} />
         </Routes>

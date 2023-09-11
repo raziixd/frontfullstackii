@@ -4,9 +4,9 @@ import TabelaDoacao from "../tabelas/TabelaDoacao";
 import { useState, useEffect } from "react";
 import { Alert, Container } from "react-bootstrap";
 import { urlBase3, urlBase2} from "../utilitarios/definicoes";
-import BarraBusca from "../forms/BarraBusca";
 
-export default function TelaCadastro(props) {
+
+export default function TelaDoacao(props) {
   const [exibirTabela, setExibirTabela] = useState(true);
   const [doacoes, setDoacoes] = useState([]);
   const [modoEdicao, setModoEdicao] = useState(false);
@@ -52,7 +52,7 @@ export default function TelaCadastro(props) {
   }
 
   useEffect(() => {
-    fetch(urlBase3, {
+    fetch(urlBase2, {
       method: "GET",
     })
       .then((resposta) => {
@@ -66,22 +66,13 @@ export default function TelaCadastro(props) {
       });
   }, []);
 
-  const [doacaoSelecionado, setDoacaoSelecionado] = useState({});
-  const [ListaDoacao, setListaDoacao] = useState([]);
 
-  useEffect(() => {
-    fetch(urlBase3)
-      .then((resposta) => resposta.json())
-      .then((dados) => {
-        setListaDoacao(dados);
-      });
-  }, []);
 
   return (
     <Pagina>
       <Container className="border">
         <Alert variant="success" className="text-center">
-          Faça uma doação
+          Registre sua doação!
         </Alert>
         {exibirTabela ? (
           <TabelaDoacao
@@ -93,14 +84,7 @@ export default function TelaCadastro(props) {
           />
         ) : (
           <div>
-            <BarraBusca
-              placeHolder={"Informe sua busca"}
-              dados={setListaDoacao}
-              campoChave={"cpf"}
-              campoBusca={"nome"}
-              funcaoSelecao={setDoacaoSelecionado}
-              valor={""}
-            />
+           
             <FormDoacao
               listaDoacoes={doacoes}
               exibirTabela={setExibirTabela}

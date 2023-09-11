@@ -73,16 +73,7 @@ export default function TelaCadastro(props) {
       });
   }, []);
 
-  const [doacaoSelecionado, setDoacaoSelecionado] = useState({});
-  const [ListaDoacao, setListaDoacao] = useState([]);
 
-    useEffect(() => {
-    fetch(urlBase2)
-      .then((resposta) => resposta.json())
-      .then((dados) => {
-        setListaDoacao(dados);
-      });
-  }, []);
 
   return (
     <Pagina>
@@ -100,14 +91,14 @@ export default function TelaCadastro(props) {
           />
         ) : (
           <div>
-            <BarraBusca
+            {/* <BarraBusca
               placeHolder={"Informe sua busca"}
               dados={setListaDoacao}
               campoChave={"cpf"}
               campoBusca={ListaDoacao}
               funcaoSelecao={setDoacaoSelecionado}
               valor={doacaoSelecionado}
-            />
+            /> */}
             <FormUsuarios
               listaUsuarios={usuarios}
               exibirTabela={setExibirTabela}

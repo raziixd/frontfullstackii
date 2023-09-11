@@ -1,22 +1,22 @@
 // import { useState } from "react";
 import { Button, Table, Container, Form, Row, Col } from "react-bootstrap";
-import { urlBase3 } from "../utilitarios/definicoes";
+import { urlBase2 } from "../utilitarios/definicoes";
 
 export default function TabelaDoacao(props) {
-  // const [usuarios, setDoacaos] = useState(props.listaDoacaos)
+  // const [usuarios, setDoacoes] = useState(props.listaDoacoes)
 
   function filtrar(e) {
     const termoBusca = e.currentTarget.value;
-    fetch(urlBase3 + "/doacao", { method: "GET" })
+    fetch(urlBase2, { method: "GET" })
       .then((resposta) => {
         return resposta.json();
       })
-      .then((listaDoacaos) => {
-        if (Array.isArray(listaDoacaos)) {
-          const resultadoBusca = listaDoacaos.filter((doacao) =>
+      .then((listaDoacoes) => {
+        if (Array.isArray(listaDoacoes)) {
+          const resultadoBusca = listaDoacoes.filter((doacao) =>
             doacao.nome.toLowerCase().includes(termoBusca.toLowerCase())
           );
-          props.setDoacaos(resultadoBusca);
+          props.setDoacoes(resultadoBusca);
         }
       });
   }
@@ -33,15 +33,15 @@ export default function TabelaDoacao(props) {
 
       <Container className=" m-3">
         <Row>
-          <Col md-11>
+          <Col >
             <Form.Control
               type="text"
               id="termoBusca"
-              placeholder="Filtre sua busca"
+              placeholder="Filtre sua busca pelo nome"
               onChange={filtrar}
             />
           </Col>
-          <Col md-1>
+          <Col >
             <Button>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -61,20 +61,21 @@ export default function TabelaDoacao(props) {
       <Table striped bordered hover size="sm">
         <thead>
           <tr>
-            <th>Nome</th>
+            <th>ID</th>
             <th>Item Doado</th>
             <th>Valor Doado</th>
+            <th>CPF</th>
             <th>Ações</th>
           </tr>
         </thead>
         <tbody>
-          {props.listaDoacaos?.map((doacao) => {
+          {props.listaDoacoes?.map((doacao) => {
             return (
               <tr key={doacao.id}>
                 <td>{doacao.id}</td>
                 <td>{doacao.itemDoado}</td>
                 <td>{doacao.valorDoado}</td>
-                <td>{doacao.nome}</td>
+                <td>{doacao.cpfUsuario}</td>
                 <td>
                   <Button
                     onClick={() => {
