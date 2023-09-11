@@ -18,6 +18,7 @@ function BarraBusca({
 
   useEffect(() => {
     filtrarResultado();
+    // eslint-disable-next-line
   }, [termoBusca]);
 
   function filtrarResultado() {
