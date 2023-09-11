@@ -3,7 +3,7 @@ import Pagina from "../templates/pagina";
 import TabelaDoacao from "../tabelas/TabelaDoacao";
 import { useState, useEffect } from "react";
 import { Alert, Container } from "react-bootstrap";
-import { urlBase3, urlBase2} from "../utilitarios/definicoes";
+import { urlBase2} from "../utilitarios/definicoes";
 
 
 export default function TelaDoacao(props) {

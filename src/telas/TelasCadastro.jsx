@@ -3,8 +3,8 @@ import Pagina from "../templates/pagina";
 import TabelaUsuarios from "../tabelas/TabelaUsuarios";
 import { useState, useEffect } from "react";
 import { Alert, Container } from "react-bootstrap";
-import { urlBase2, urlBase3 } from "../utilitarios/definicoes";
-import BarraBusca from "../forms/BarraBusca";
+import { urlBase3 } from "../utilitarios/definicoes";
+
 
 export default function TelaCadastro(props) {
   const [exibirTabela, setExibirTabela] = useState(true);
