@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import { Button, Form, Row, Col, Container } from "react-bootstrap";
-import { urlBase2, urlBase3 } from "../utilitarios/definicoes";
+import { urlBase2 } from "../utilitarios/definicoes";
 import BarraBusca from "./BarraBusca";
-import Home from "../home";
+// import Home from "../home";
 
 export default function FormDoacao(props) {
   const [validado, setValidado] = useState(false);
