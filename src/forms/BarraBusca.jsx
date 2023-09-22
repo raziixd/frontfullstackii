@@ -8,7 +8,7 @@ function BarraBusca({
   campoChave,
   campoBusca,
   funcaoSelecao,
-  valor,
+  valor
 }) {
   const inputBusca = useRef();
 

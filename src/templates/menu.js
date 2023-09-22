@@ -17,6 +17,8 @@ export default function Menu(props){
               <NavDropdown.Divider />
               <LinkContainer to="/FormDoacao"><NavDropdown.Item>Doações</NavDropdown.Item></LinkContainer>
               <NavDropdown.Divider />
+              <LinkContainer to="/home"><NavDropdown.Item>Teste Axios</NavDropdown.Item></LinkContainer>
+              <NavDropdown.Divider />
               {/* <LinkContainer to="/FormTreinador"><NavDropdown.Item>Treinadores</NavDropdown.Item></LinkContainer>
               <NavDropdown.Divider />
              */}

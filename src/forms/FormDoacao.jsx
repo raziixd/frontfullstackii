@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Button, Form, Row, Col, Container } from "react-bootstrap";
 import { urlBase2, urlBase3 } from "../utilitarios/definicoes";
 import BarraBusca from "./BarraBusca";
+import Home from "../home";
 
 export default function FormDoacao(props) {
   const [validado, setValidado] = useState(false);
@@ -63,18 +64,22 @@ export default function FormDoacao(props) {
   }
 
   const [usuarioSelecionado, setUsuarioSelecionado] = useState({});
-  const [ListaUsuarios, setListaUsuarios] = useState([]);
+  const [listaUsuarios, setListaUsuarios] = useState([]);
 
   useEffect(() => {
-    fetch(urlBase3, {method: "GET"})
-      .then((resposta) => resposta.json())
-      .then((dados) => {
-        setListaUsuarios(dados);       
-      
-        
-      });
-  }, []);
 
+    const fetchData = async () => {
+
+        const response = await fetch("https://129.146.68.51/aluno19-pfsii/usuarios", {method:"GET"});
+        const data = await response.json();
+        setListaUsuarios(data)
+
+        console.log(data)
+    }
+    fetchData()
+    
+}, []);
+    
   
   return (
     <Container>
@@ -82,9 +87,10 @@ export default function FormDoacao(props) {
         <Row>
         <Form.Group className="mb-3">
             <Form.Label>Usuário:</Form.Label>
+            {/* <Home/> */}
             <BarraBusca
               placeHolder={"Informe um Usuário"}
-              dados={ListaUsuarios}              
+              dados={listaUsuarios}              
               campoChave={"cpf"}
               campoBusca={"nome"}
               funcaoSelecao={(usuarioSelecionado) =>{
@@ -93,6 +99,7 @@ export default function FormDoacao(props) {
               }}
               valor={""}
               />
+              {console.log(listaUsuarios)}
             <Form.Control.Feedback type="invalid">
               Por favor, insira o Usuário!
             </Form.Control.Feedback>
