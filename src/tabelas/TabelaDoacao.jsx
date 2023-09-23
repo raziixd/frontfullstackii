@@ -64,7 +64,7 @@ export default function TabelaDoacao(props) {
             <th>ID</th>
             <th>Item Doado</th>
             <th>Valor Doado</th>
-            <th>CPF</th>
+            <th>CPF do Doador</th>
             <th>Ações</th>
           </tr>
         </thead>

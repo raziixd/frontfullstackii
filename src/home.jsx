@@ -1,11 +1,13 @@
 import axios from 'axios'
 import React, { useEffect, useState } from "react";
+import { urlBase3 } from './utilitarios/definicoes';
 
 function Home() {
     const [data, setData] = useState([])
     const [records, setRecords] = useState([])
   useEffect(() => {
-    axios.get("https://129.146.68.51/aluno19-pfsii/usuarios")
+    // axios.get("https://129.146.68.51/aluno19-pfsii/usuarios")
+    axios.get(urlBase3)
     .then(res => {
         setData(res.data)
         setRecords(res.data);

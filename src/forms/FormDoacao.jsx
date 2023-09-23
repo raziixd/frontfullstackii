@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import { Button, Form, Row, Col, Container } from "react-bootstrap";
-import { urlBase2 } from "../utilitarios/definicoes";
+import { urlBase2, urlBase3 } from "../utilitarios/definicoes";
 import BarraBusca from "./BarraBusca";
-// import Home from "../home";
+import Home from "../home";
 
 export default function FormDoacao(props) {
   const [validado, setValidado] = useState(false);
@@ -37,12 +37,12 @@ export default function FormDoacao(props) {
           },
           body: JSON.stringify(dadosEnvio),
         }).then((resposta) => {
-          window.alert("A doacao foi registrado no banco de dados!");
+          window.alert("A doacao foi registrada no banco de dados!");
           window.location.reload();
           return resposta.json();
         });
       } else {
-        dadosEnvio.codigo = doacao.codigo
+        dadosEnvio.id = doacao.id;
         fetch(urlBase2, {
           method: "PUT",
           headers: {
@@ -50,7 +50,7 @@ export default function FormDoacao(props) {
           },
           body: JSON.stringify(dadosEnvio),
         }).then((resposta) => {
-          window.alert("A doacao foi atualizado no banco de dados!");
+          window.alert("A doacao foi atualizada no banco de dados!");
           window.location.reload();
           return resposta.json();
         });
@@ -67,53 +67,73 @@ export default function FormDoacao(props) {
   const [listaUsuarios, setListaUsuarios] = useState([]);
 
   useEffect(() => {
-
     const fetchData = async () => {
-
-        const response = await fetch("https://129.146.68.51/aluno19-pfsii/usuarios", {method:"GET"});
+      try {
+        const response = await fetch(urlBase3, { method: "GET" });
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
         const data = await response.json();
-        setListaUsuarios(data)
+        console.log("Data from API:", data);
+        setListaUsuarios(data);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+    fetchData();
+  }, []);
 
-        console.log(data)
-    }
-    fetchData()
-    
-}, []);
-    
-  
   return (
     <Container>
       <Form noValidate validated={validado} onSubmit={manipulaSumissao}>
         <Row>
-        <Form.Group className="mb-3">
+          <Form.Group className="mb-3">
             <Form.Label>Usuário:</Form.Label>
-            {/* <Home/> */}
+            <Home/>
             <BarraBusca
               placeHolder={"Informe um Usuário"}
-              dados={listaUsuarios}              
+              dados={listaUsuarios}
               campoChave={"cpf"}
               campoBusca={"nome"}
-              funcaoSelecao={(usuarioSelecionado) =>{
-                  setUsuarioSelecionado(usuarioSelecionado);
-                  setDoacao({...doacao, usuario : usuarioSelecionado})
+              funcaoSelecao={(usuarioSelecionado) => {
+                setUsuarioSelecionado(usuarioSelecionado);
+                setDoacao({ ...doacao, usuario: usuarioSelecionado });
               }}
               valor={""}
-              />
-              {console.log(listaUsuarios)}
+            />
+            {/* {console.log(listaUsuarios)} */}
             <Form.Control.Feedback type="invalid">
               Por favor, insira o Usuário!
             </Form.Control.Feedback>
+              <Form.Control
+              type="text"
+              placeholder="Nome do Usuário"
+              value={usuarioSelecionado?.nome || ""}
+              onChange={(e) => {
+
+              }}
+              />
+              <Form.Control
+              type="text"
+              placeholder="CPF do Usuário"
+              value={usuarioSelecionado?.cpf || ""}
+              onChange={(e) => {
+
+              }}
+              />
+
+            
+
           </Form.Group>
 
           <Col>
-            <Form.Group className= "mb-3" controlId="itemDoado">
+            <Form.Group className="mb-3" controlId="itemDoado">
               <Form.Label>Item a ser Doado</Form.Label>
               <Form.Control
                 placeholder="Bola de capotão"
                 value={doacao.itemDoado}
                 id="itemDoado"
                 onChange={manipularMudanca}
-                
               />
               {(inputProps) => <Form.Control {...inputProps} />}
 
@@ -133,7 +153,6 @@ export default function FormDoacao(props) {
                 value={doacao.valorDoado}
                 id="valorDoado"
                 onChange={manipularMudanca}
-                
               />
               <Form.Control.Feedback type="invalid">
                 Por getileza, informe o valor da doação!

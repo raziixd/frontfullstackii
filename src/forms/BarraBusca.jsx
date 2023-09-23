@@ -89,14 +89,17 @@ function BarraBusca({
                 key={item[campoChave]}
                 onClick={() => {
                   setTermoBusca(item[campoBusca]);
+                  // setTermoBusca(`${item["nome"]} - ${item["cpf"]}`)
                   setItemSelecionado(true);
                   funcaoSelecao(item);
                   inputBusca.current.setCustomValidity("");
                   let componenteResultado = document.querySelector("[data-resultado]");
-                  componenteResultado.style.display = "none";
+                  componenteResultado.style.display = "block";
                 }}
+                // className={itemSelecionado && itemSelecionado[campoChave] === item[campoChave] ? "selected" : ""}
               >
-                {item[campoChave] + " - " + item[campoBusca]}
+                 {item[campoChave] + " - " + item[campoBusca]}
+                {/* {item["nome"] } - {item["cpf"]} */}
               </li>
             );
           })}
