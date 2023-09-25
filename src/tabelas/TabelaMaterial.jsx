@@ -63,7 +63,7 @@ export default function TabelaDoacao(props) {
           <tr>
             <th>ID</th>
             <th>Item</th>
-            <th>Valor Doado</th>
+            <th>Quantidade</th>
             <th>CPF do Doador</th>
             <th>Ações</th>
           </tr>
@@ -73,8 +73,8 @@ export default function TabelaDoacao(props) {
             return (
               <tr key={doacao.id}>
                 <td>{doacao.id}</td>
-                <td>{doacao.itemDoado}</td>
-                <td>{doacao.valorDoado}</td>
+                <td>{doacao.item}</td>
+                <td>{doacao.qtd}</td>
                 <td>{doacao.cpfUsuario}</td>
                 <td>
                   <Button
