@@ -1,20 +1,20 @@
 // import { useState } from "react";
 import { Button, Table, Container, Form, Row, Col } from "react-bootstrap";
-import { urlBase2 } from "../utilitarios/definicoes";
+import { urlBase } from "../utilitarios/definicoes";
 
-export default function TabelaDoacao(props) {
+export default function TabelaMaterial(props) {
   // const [usuarios, setDoacoes] = useState(props.listaDoacoes)
 
   function filtrar(e) {
     const termoBusca = e.currentTarget.value;
-    fetch(urlBase2, { method: "GET" })
+    fetch(urlBase, { method: "GET" })
       .then((resposta) => {
         return resposta.json();
       })
       .then((listaDoacoes) => {
         if (Array.isArray(listaDoacoes)) {
-          const resultadoBusca = listaDoacoes.filter((doacao) =>
-            doacao.nome.toLowerCase().includes(termoBusca.toLowerCase())
+          const resultadoBusca = listaDoacoes.filter((material) =>
+            material.item.toLowerCase().includes(termoBusca.toLowerCase())
           );
           props.setDoacoes(resultadoBusca);
         }
@@ -37,7 +37,7 @@ export default function TabelaDoacao(props) {
             <Form.Control
               type="text"
               id="termoBusca"
-              placeholder="Filtre sua busca pelo nome"
+              placeholder="Filtre sua busca pelo item doado"
               onChange={filtrar}
             />
           </Col>

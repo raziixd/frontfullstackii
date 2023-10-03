@@ -11,7 +11,7 @@ export default function TelaMaterial(props) {
   const [doacoes, setDoacoes] = useState([]);
   const [modoEdicao, setModoEdicao] = useState(false);
   const [usuarioEdicao, setUsuarioEdicao] = useState({
-    id_material:"",
+    id:"",
     item: "",
     qtd: "",
     

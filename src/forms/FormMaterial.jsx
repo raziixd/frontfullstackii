@@ -4,7 +4,7 @@ import { urlBase, urlBase3 } from "../utilitarios/definicoes";
 import BarraBusca from "./BarraBusca";
 // import Home from "../home";
 
-export default function FormMaterial(props) {
+export default function FormDoacao(props) {
   const [validado, setValidado] = useState(false);
   const [doacao, setDoacao] = useState(props.doacao);
 
@@ -37,7 +37,7 @@ export default function FormMaterial(props) {
           },
           body: JSON.stringify(dadosEnvio),
         }).then((resposta) => {
-          window.alert("A doacao foi registrada no banco de dados!");
+          window.alert("A doação dos materiais foi registrada no banco de dados!");
           window.location.reload();
           return resposta.json();
         });
@@ -50,7 +50,7 @@ export default function FormMaterial(props) {
           },
           body: JSON.stringify(dadosEnvio),
         }).then((resposta) => {
-          window.alert("A doacao foi atualizada no banco de dados!");
+          window.alert("A doação dos materiais foi atualizada no banco de dados!");
           window.location.reload();
           return resposta.json();
         });
