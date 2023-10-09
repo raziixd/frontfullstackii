@@ -73,7 +73,7 @@ export default function FormUsuarios(props) {
       <Form noValidate validated={validado} onSubmit={manipulaSubmissao}>
         <Row>
           <Col>
-            <Form.Group className="mb-3" controlId="nome">
+            <Form.Group className="mb-3" >
               <Form.Label>Nome</Form.Label>
               <Form.Control
                 required
@@ -90,7 +90,7 @@ export default function FormUsuarios(props) {
             </Form.Group>
           </Col>
           <Col>
-            <Form.Group className="mb-3" controlId="cpf">
+            <Form.Group className="mb-3" >
               <Form.Label>CPF</Form.Label>
               <Form.Control
                 required
@@ -111,7 +111,7 @@ export default function FormUsuarios(props) {
 
         <Row>
           <Col>
-            <Form.Group className="mb-3" controlId="dataNasc">
+            <Form.Group className="mb-3" >
               <Form.Label>Data de Nascimento</Form.Label>
               <Form.Control
                 required
@@ -128,7 +128,7 @@ export default function FormUsuarios(props) {
           </Col>
 
           <Col>
-            <Form.Group className="mb-3" controlId="email">
+            <Form.Group className="mb-3" >
               <Form.Label>Email</Form.Label>
               <Form.Control
                 required
@@ -148,7 +148,7 @@ export default function FormUsuarios(props) {
 
         <Row>
           <Col>
-            <Form.Group className="mb-3" controlId="tel">
+            <Form.Group className="mb-3" >
               <Form.Label>Telefone</Form.Label>
               <Form.Control
                 required
@@ -189,7 +189,7 @@ export default function FormUsuarios(props) {
 
         <Row>
           <Col>
-            <Form.Group className="mb-3" controlId="cidade">
+            <Form.Group className="mb-3" >
               <Form.Label>Cidade</Form.Label>
               <Form.Control
                 required

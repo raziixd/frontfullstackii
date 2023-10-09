@@ -127,7 +127,7 @@ export default function FormDoacao(props) {
           </Form.Group>
 
           <Col>
-            <Form.Group className="mb-3" controlId="itemDoado">
+            <Form.Group className="mb-3" >
               <Form.Label>Item a ser Doado</Form.Label>
               <Form.Control
                 placeholder="Bola de capotão"
@@ -145,7 +145,7 @@ export default function FormDoacao(props) {
         </Row>
         <Row>
           <Col>
-            <Form.Group className="mb-3" controlId="valorDoado">
+            <Form.Group className="mb-3" >
               <Form.Label>Valor a ser doado</Form.Label>
               <Form.Control
                 type="int"
