@@ -13,20 +13,20 @@ export default function Menu(props){
             
             <NavDropdown title="Menu" id="basic-nav-dropdown">
               
-              <LinkContainer to="/FormUsuario"><NavDropdown.Item>Usuario</NavDropdown.Item></LinkContainer>
+              <LinkContainer to="/frontfullstackii/FormUsuario"><NavDropdown.Item>Usuario</NavDropdown.Item></LinkContainer>
               <NavDropdown.Divider />
-              <LinkContainer to="/FormDoacao"><NavDropdown.Item>Doações</NavDropdown.Item></LinkContainer>
+              <LinkContainer to="/frontfullstackii/FormDoacao"><NavDropdown.Item>Doações</NavDropdown.Item></LinkContainer>
               <NavDropdown.Divider />
-              <LinkContainer to="/FormMaterial"><NavDropdown.Item>Cadastro de Materiais</NavDropdown.Item></LinkContainer>
+              <LinkContainer to="/frontfullstackii/FormMaterial"><NavDropdown.Item>Cadastro de Materiais</NavDropdown.Item></LinkContainer>
               <NavDropdown.Divider />
-              <LinkContainer to="/FormDoacaoMaterial"><NavDropdown.Item>Adicionar material para doação</NavDropdown.Item></LinkContainer>
+              <LinkContainer to="/frontfullstackii/FormDoacaoMaterial"><NavDropdown.Item>Adicionar material para doação</NavDropdown.Item></LinkContainer>
               <NavDropdown.Divider />
              
               
             </NavDropdown>
           </Nav>
           <Nav>
-            <Nav.Link href="/"> Sair</Nav.Link>
+            <Nav.Link href="/frontfullstackii"> Sair</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>
