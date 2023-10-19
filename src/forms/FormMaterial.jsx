@@ -37,7 +37,7 @@ export default function FormMaterial(props) {
           body: JSON.stringify(dadosEnvio),
         }).then((resposta) => {
           window.alert("O material foi registrado no banco de dados!");
-          window.location.reload();
+          props.exibirTabela(true);
           return resposta.json();
         });
       } else {
@@ -52,7 +52,7 @@ export default function FormMaterial(props) {
           window.alert(
             "A doação dos materiais foi atualizada no banco de dados!"
           );
-          window.location.reload();
+          props.exibirTabela(true);
           return resposta.json();
         });
       }

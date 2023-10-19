@@ -51,20 +51,21 @@ export default function TelaDoacao(props) {
   }
 
   useEffect(() => {
-    fetch(urlBase2, {
-      method: "GET",
-    })
-      .then((resposta) => {
-        return resposta.json();
+    if(exibirTabela){
+      fetch(urlBase2, {
+        method: "GET",
       })
-      .then((dados) => {
-        if (Array.isArray(dados)) {
-          setDoacoes(dados);
-        } else {
-        }
-      });
-  }, []);
-
+        .then((resposta) => {
+          return resposta.json();
+        })
+        .then((dados) => {
+          if (Array.isArray(dados)) {
+            setDoacoes(dados);
+          } 
+        });      
+    }
+  }, [exibirTabela]);
+  
 
 
   return (

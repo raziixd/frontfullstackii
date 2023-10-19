@@ -39,7 +39,7 @@ export default function FormDoacao(props) {
           body: JSON.stringify(dadosEnvio),
         }).then((resposta) => {
           window.alert("A doacao foi registrada no banco de dados!");
-          window.location.reload();
+          props.exibirTabela(true);
           return resposta.json();
         });
       } else {
@@ -52,7 +52,7 @@ export default function FormDoacao(props) {
           body: JSON.stringify(dadosEnvio),
         }).then((resposta) => {
           window.alert("A doacao foi atualizada no banco de dados!");
-          window.location.reload();
+          props.exibirTabela(true);
           return resposta.json();
         });
       }

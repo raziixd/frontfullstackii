@@ -55,9 +55,9 @@ export default function FormUsuarios(props) {
           })
           .then((dados) => {
             window.alert(dados.mensagem);
+            props.exibirTabela(true);;
           })
 
-          .then(window.location.reload());
       }
 
       setValidate(false);

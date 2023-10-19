@@ -6,7 +6,7 @@ export default function Menu(props){
     return (
         <Navbar bg="light" expand="lg">
       <Container>
-        <LinkContainer to ="/"><Navbar.Brand>Inicio</Navbar.Brand></LinkContainer>
+        <LinkContainer to ="/frontfullstackii"><Navbar.Brand>Inicio</Navbar.Brand></LinkContainer>
         <Navbar.Toggle aria-controls="basic-navbar-nav"/>
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">

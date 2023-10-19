@@ -45,7 +45,7 @@ useEffect(()=>{
           body: JSON.stringify(dadosEnvio),
         }).then((resposta) => {
           window.alert("A doação dos materiais foi registrada no banco de dados!");
-          window.location.reload();
+          props.exibirTabela(true);
           return resposta.json();
         });
       } else {
@@ -58,7 +58,7 @@ useEffect(()=>{
           body: JSON.stringify(dadosEnvio),
         }).then((resposta) => {
           window.alert("A doação dos materiais foi atualizada no banco de dados!");
-          window.location.reload();
+          props.exibirTabela(true);
           return resposta.json();
         });
       }
