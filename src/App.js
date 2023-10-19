@@ -12,11 +12,11 @@ function App() {
     <div>
       <BrowserRouter>
         <Routes>
-          <Route path="/FormUsuario" element={<TelaCadastro />} />
-          <Route path="/FormDoacao" element={<TelaDoacao />} />
-          <Route path="/FormMaterial" element={<TelaMaterial />} />
-          <Route path="/FormDoacaoMaterial" element={<TelaDoacaoMaterial />} />
-          <Route path="/" element={<TelaMenu />} />
+          <Route path="/frontfullstackii/FormUsuario" element={<TelaCadastro />} />
+          <Route path="/frontfullstackii/FormDoacao" element={<TelaDoacao />} />
+          <Route path="/frontfullstackii/FormMaterial" element={<TelaMaterial />} />
+          <Route path="/frontfullstackii/FormDoacaoMaterial" element={<TelaDoacaoMaterial />} />
+          <Route path="/frontfullstackii/" element={<TelaMenu />} />
           <Route path="*" element={<Tela404 />} />
         </Routes>
       </BrowserRouter>
