@@ -13,15 +13,15 @@ export default function Menu(props){
             
             <NavDropdown title="Menu" id="basic-nav-dropdown">
               
-              <LinkContainer to="/FormUsuario"><NavDropdown.Item>Jogadores</NavDropdown.Item></LinkContainer>
+              <LinkContainer to="/FormUsuario"><NavDropdown.Item>Usuario</NavDropdown.Item></LinkContainer>
               <NavDropdown.Divider />
               <LinkContainer to="/FormDoacao"><NavDropdown.Item>Doações</NavDropdown.Item></LinkContainer>
               <NavDropdown.Divider />
-              <LinkContainer to="/FormMaterial"><NavDropdown.Item>Materiais para doações</NavDropdown.Item></LinkContainer>
+              <LinkContainer to="/FormMaterial"><NavDropdown.Item>Cadastro de Materiais</NavDropdown.Item></LinkContainer>
               <NavDropdown.Divider />
-              {/* <LinkContainer to="/FormTreinador"><NavDropdown.Item>Treinadores</NavDropdown.Item></LinkContainer>
+              <LinkContainer to="/FormDoacaoMaterial"><NavDropdown.Item>Adicionar material para doação</NavDropdown.Item></LinkContainer>
               <NavDropdown.Divider />
-             */}
+             
               
             </NavDropdown>
           </Nav>

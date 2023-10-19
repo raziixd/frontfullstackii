@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Button, Form, Row, Col, Container } from "react-bootstrap";
 import { urlBase2, urlBase3 } from "../utilitarios/definicoes";
+import { IMaskInput } from "react-imask";
 import BarraBusca from "./BarraBusca";
 // import Home from "../home";
 
@@ -88,10 +89,10 @@ export default function FormDoacao(props) {
       <Form noValidate validated={validado} onSubmit={manipulaSumissao}>
         <Row>
           <Form.Group className="mb-3">
-            <Form.Label>Usuário:</Form.Label>
+            <Form.Label>Doador:</Form.Label>
             {/* <Home/> */}
             <BarraBusca
-              placeHolder={"Informe um Usuário"}
+              placeHolder={"Informe o Doador"}
               dados={listaUsuarios}
               campoChave={"cpf"}
               campoBusca={"nome"}
@@ -105,51 +106,30 @@ export default function FormDoacao(props) {
             <Form.Control.Feedback type="invalid">
               Por favor, insira o Usuário!
             </Form.Control.Feedback>
-              <Form.Control
+            <Form.Control
               type="text"
               placeholder="Nome do Usuário"
               value={usuarioSelecionado?.nome || ""}
-              onChange={(e) => {
-
-              }}
-              />
-              <Form.Control
+              onChange={(e) => {}}
+            />
+            <Form.Control
               type="text"
               placeholder="CPF do Usuário"
               value={usuarioSelecionado?.cpf || ""}
-              onChange={(e) => {
-
-              }}
-              />
-
-            
-
+              onChange={(e) => {}}
+            />
           </Form.Group>
-
-          <Col>
-            <Form.Group className="mb-3" >
-              <Form.Label>Item a ser Doado</Form.Label>
-              <Form.Control
-                placeholder="Bola de capotão"
-                value={doacao.itemDoado}
-                id="itemDoado"
-                onChange={manipularMudanca}
-              />
-              {(inputProps) => <Form.Control {...inputProps} />}
-
-              <Form.Control.Feedback type="invalid">
-                Por favor, informe o item!
-              </Form.Control.Feedback>
-            </Form.Group>
-          </Col>
         </Row>
         <Row>
           <Col>
-            <Form.Group className="mb-3" >
-              <Form.Label>Valor a ser doado</Form.Label>
+            <Form.Group className="mb-3">
+              <Form.Label>Valor</Form.Label>
+              <h6>Somente valores inteiros!</h6>
               <Form.Control
                 type="int"
-                placeholder="R$ 100,00"
+                as={IMaskInput}
+                mask="R$ 000000000"
+                placeholder="R$ 100"
                 value={doacao.valorDoado}
                 id="valorDoado"
                 onChange={manipularMudanca}

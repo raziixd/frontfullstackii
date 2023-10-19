@@ -3,7 +3,7 @@ import { Button, Table, Container, Form, Row, Col } from "react-bootstrap";
 import { urlBase } from "../utilitarios/definicoes";
 
 export default function TabelaMaterial(props) {
-  // const [usuarios, setDoacoes] = useState(props.listaDoacoes)
+  // const [usuarios, setDoacoes] = useState(props.listaMaterial)
 
   function filtrar(e) {
     const termoBusca = e.currentTarget.value;
@@ -11,9 +11,9 @@ export default function TabelaMaterial(props) {
       .then((resposta) => {
         return resposta.json();
       })
-      .then((listaDoacoes) => {
-        if (Array.isArray(listaDoacoes)) {
-          const resultadoBusca = listaDoacoes.filter((material) =>
+      .then((listaMaterial) => {
+        if (Array.isArray(listaMaterial)) {
+          const resultadoBusca = listaMaterial.filter((material) =>
             material.item.toLowerCase().includes(termoBusca.toLowerCase())
           );
           props.setDoacoes(resultadoBusca);
@@ -61,26 +61,22 @@ export default function TabelaMaterial(props) {
       <Table striped bordered hover size="sm">
         <thead>
           <tr>
-            <th>ID</th>
-            <th>Item</th>
-            <th>Quantidade</th>
-            <th>CPF do Doador</th>
+            <th>ID Material</th>
+            <th>Material Registrado</th>
             <th>Ações</th>
           </tr>
         </thead>
         <tbody>
-          {props.listaDoacoes?.map((doacao) => {
+          {props.listaMateriais?.map((material) => {
             return (
-              <tr key={doacao.id}>
-                <td>{doacao.id}</td>
-                <td>{doacao.item}</td>
-                <td>{doacao.qtd}</td>
-                <td>{doacao.cpfUsuario}</td>
+              <tr key={material.id}>
+                <td>{material.id}</td>
+                <td>{material.item}</td>
                 <td>
                   <Button
                     onClick={() => {
                       if (window.confirm("Deseja excluir?")) {
-                        props.deletar(doacao);
+                        props.deletar(material);
                       }
                     }}
                   >
@@ -98,7 +94,7 @@ export default function TabelaMaterial(props) {
                   <Button
                     onClick={() => {
                       if (window.confirm("Deseja atualizar?")) {
-                        props.editar(doacao);
+                        props.editar(material);
                       }
                     }}
                   >

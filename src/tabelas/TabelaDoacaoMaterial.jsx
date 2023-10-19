@@ -1,21 +1,22 @@
 // import { useState } from "react";
 import { Button, Table, Container, Form, Row, Col } from "react-bootstrap";
-import { urlBase2 } from "../utilitarios/definicoes";
+import { urlBase4 } from "../utilitarios/definicoes";
 
-export default function TabelaDoacao(props) {
-  // const [usuarios, setDoacoes] = useState(props.listaDoacoes)
+export default function TabelaDoacaoMaterial(props) {
+  // const [usuarios, setDoacoes] = useState(props.listaDoacoesMateriais)
 
   function filtrar(e) {
     const termoBusca = e.currentTarget.value;
-    fetch(urlBase2, { method: "GET" })
+    fetch(urlBase4, { method: "GET" })
       .then((resposta) => {
         return resposta.json();
       })
-      .then((listaDoacoes) => {
-        if (Array.isArray(listaDoacoes)) {
-          const resultadoBusca = listaDoacoes.filter((doacao) => doacao.valorDoado.toLowerCase().includes(termoBusca.toLowerCase())
+      .then((listaDoacoesMateriais) => {
+        if (Array.isArray(listaDoacoesMateriais)) {
+          const resultadoBusca = listaDoacoesMateriais.filter((doacaomaterial) =>
+          doacaomaterial.idDoacao.toLowerCase().includes(termoBusca.toLowerCase())
           );
-          props.setDoacoes(resultadoBusca);
+          props.setDoacaoMaterial(resultadoBusca);
         }
       });
   }
@@ -38,7 +39,7 @@ export default function TabelaDoacao(props) {
             <Form.Control
               type="text"
               id="termoBusca"
-              placeholder="Filtre sua busca pelo id"
+              placeholder="Filtre sua busca pelo item"
               onChange={filtrar}
             />
           </Col>
@@ -63,24 +64,23 @@ export default function TabelaDoacao(props) {
         <thead>
           <tr>
             <th>ID Doação</th>
-            <th>Valor Doado</th>
-            <th>CPF Doador</th>
+            <th>ID Material</th>
+            <th>Quantidade</th>
             <th>Ações</th>
           </tr>
         </thead>
         <tbody>
-          {props.listaDoacoes?.map((doacao) => {
+          {props.listaDoacoesMateriais?.map((doacaomaterial, i) => { 
             return (
-              <tr key={doacao.id}>
-                <td>{doacao.id}</td>
-                <td>{doacao.valorDoado}</td>
-                <td>{doacao.usuario.cpf}</td>
-                
+              <tr key={i}>
+                <td>{doacaomaterial.doacao.id}</td>
+                <td>{doacaomaterial.material.id}</td>
+                <td>{doacaomaterial.quantidade}</td>
                 <td>
                   <Button
                     onClick={() => {
                       if (window.confirm("Deseja excluir?")) {
-                        props.deletar(doacao);
+                        props.deletar(doacaomaterial);
                       }
                     }}
                   >
@@ -98,7 +98,7 @@ export default function TabelaDoacao(props) {
                   <Button
                     onClick={() => {
                       if (window.confirm("Deseja atualizar?")) {
-                        props.editar(doacao);
+                        props.editar(doacaomaterial);
                       }
                     }}
                   >

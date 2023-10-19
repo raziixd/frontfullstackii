@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Tela404 from "./telas/tela404";
 import TelaDoacao from "./telas/TelaDoacao";
 import TelaMaterial from "./telas/TelaMaterial";
+import TelaDoacaoMaterial from "./telas/TelaDoacaoMaterial";
 // import Home from "./home";
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
           <Route path="/FormUsuario" element={<TelaCadastro />} />
           <Route path="/FormDoacao" element={<TelaDoacao />} />
           <Route path="/FormMaterial" element={<TelaMaterial />} />
+          <Route path="/FormDoacaoMaterial" element={<TelaDoacaoMaterial />} />
           <Route path="/" element={<TelaMenu />} />
           <Route path="*" element={<Tela404 />} />
         </Routes>

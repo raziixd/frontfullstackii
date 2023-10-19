@@ -94,7 +94,7 @@ function BarraBusca({
                   funcaoSelecao(item);
                   inputBusca.current.setCustomValidity("");
                   let componenteResultado = document.querySelector("[data-resultado]");
-                  componenteResultado.style.display = "block";
+                  componenteResultado.style.display = "none";
                 }}
                 // className={itemSelecionado && itemSelecionado[campoChave] === item[campoChave] ? "selected" : ""}
               >

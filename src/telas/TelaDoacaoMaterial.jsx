@@ -1,36 +1,35 @@
-import FormMaterial from "../forms/FormMaterial";
+import FormDoacaoMaterial from "../forms/FormDoacaoMaterial";
 import Pagina from "../templates/pagina";
-import TabelaMaterial from "../tabelas/TabelaMaterial";
+import TabelaDoacaoMaterial from "../tabelas/TabelaDoacaoMaterial";
 import { useState, useEffect } from "react";
 import { Alert, Container } from "react-bootstrap";
-import { urlBase} from "../utilitarios/definicoes";
+import { urlBase4} from "../utilitarios/definicoes";
 
 
-export default function TelaMaterial(props) {
+export default function TelaDoacaoMaterial(props) {
   const [exibirTabela, setExibirTabela] = useState(true);
-  const [materiais, setDoacoes] = useState([]);
+  const [materialdoacoes, setMaterialDoacoes] = useState([]);
   const [modoEdicao, setModoEdicao] = useState(false);
-  const [usuarioEdicao, setUsuarioEdicao] = useState({
-    id:"",
-    item: "",
-    
-    
+  const [materialdoacoesEdicao, setMaterialDoacoesEdicao] = useState({
+    doacaoID: "",
+    materialID: "",
+    quantidade: "",
   });
 
-  function prepararTela(material) {
+  function prepararTela(doacaomaterial) {
     setModoEdicao(true);
-    setUsuarioEdicao(material);
+    setMaterialDoacoesEdicao(doacaomaterial);
     setExibirTabela(false);
   }
 
-  // function excluir(material){
+  // function excluir(doacaomaterial){
 
-  //     fetch(urlBase + '/materiais',{
+  //     fetch(urlBase + '/materialdoacoes',{
   //         method: "DELETE",
   //         headers: {
   //             "Content-Type":"application/json"
   //         },
-  //         body: JSON.stringify(material)
+  //         body: JSON.stringify(doacaomaterial)
   //     })
   //     .then((resposta) =>{
   //         window.location.reload()
@@ -39,11 +38,11 @@ export default function TelaMaterial(props) {
 
   // }
 
-  function deletarUsuario(material) {
-    fetch(urlBase, {
+  function deletarUsuario(doacaomaterial) {
+    fetch(urlBase4, {
       method: "DELETE",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(material),
+      body: JSON.stringify(doacaomaterial),
     })
       .then((resposta) => {
         window.alert("O item selecionado foi deletado com sucesso!");
@@ -53,7 +52,7 @@ export default function TelaMaterial(props) {
   }
 
   useEffect(() => {
-    fetch(urlBase, {
+    fetch(urlBase4, {
       method: "GET",
     })
       .then((resposta) => {
@@ -61,7 +60,7 @@ export default function TelaMaterial(props) {
       })
       .then((dados) => {
         if (Array.isArray(dados)) {
-          setDoacoes(dados);
+          setMaterialDoacoes(dados);
         } else {
         }
       });
@@ -73,12 +72,12 @@ export default function TelaMaterial(props) {
     <Pagina>
       <Container className="border">
         <Alert variant="success" className="text-center">
-          Registro de materiais para doação!
+          Adicione items a sua doação!
         </Alert>
         {exibirTabela ? (
-          <TabelaMaterial
-            listaMateriais={materiais}
-            setDoacoes={setDoacoes}
+          <TabelaDoacaoMaterial
+            listaDoacoesMateriais={materialdoacoes}
+            setMaterialDoacoes={setMaterialDoacoes}
             exibirTabela={setExibirTabela}
             editar={prepararTela}
             deletar={deletarUsuario}
@@ -86,14 +85,14 @@ export default function TelaMaterial(props) {
         ) : (
           <div>
            
-            <FormMaterial
-              listaMateriais={materiais}
+            <FormDoacaoMaterial
+              listaDoacoesMateriais={materialdoacoes}
               exibirTabela={setExibirTabela}
-              setDoacoes={setDoacoes}
+              setMaterialDoacoes={setMaterialDoacoes}
               editar={prepararTela}
               modoEdicao={modoEdicao}
               setModoEdicao={setModoEdicao}
-              material={usuarioEdicao}
+              doacaomaterial={materialdoacoesEdicao}
             />
           </div>
         )}

@@ -12,8 +12,7 @@ export default function TelaDoacao(props) {
   const [modoEdicao, setModoEdicao] = useState(false);
   const [usuarioEdicao, setUsuarioEdicao] = useState({
     valorDoado: "",
-    itemDoado: "",
-    nome: "",
+    
   });
 
   function prepararTela(doacao) {
