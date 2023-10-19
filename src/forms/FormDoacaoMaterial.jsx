@@ -152,7 +152,7 @@ useEffect(()=>{
               dados={listaDoacoes}
               campoChave={"id"}
               campoBusca={"valorDoado"}
-              funcaoSelecao={(doacaoSelecionado) => {
+              funcaoSelecao={() => {
                 setDoacaoSelecionado(doacaoSelecionado);
                 setMaterialDoacao({ ...materialdoacao, doacao : doacaoSelecionado });
               }}
@@ -166,7 +166,7 @@ useEffect(()=>{
               dados={listaMaterial}
               campoChave={"id"}
               campoBusca={"item"}
-              funcaoSelecao={(materialSelecionado) => {
+              funcaoSelecao={() => {
                 setMaterialSelecionado(materialSelecionado);
                 setMaterialDoacao({ ...materialdoacao, material : materialSelecionado });
               }}
