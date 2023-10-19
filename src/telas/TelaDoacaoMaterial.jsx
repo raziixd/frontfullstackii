@@ -52,19 +52,20 @@ export default function TelaDoacaoMaterial(props) {
   }
 
   useEffect(() => {
-    fetch(urlBase4, {
-      method: "GET",
-    })
-      .then((resposta) => {
-        return resposta.json();
+    if(exibirTabela){
+      fetch(urlBase4, {
+        method: "GET",
       })
-      .then((dados) => {
-        if (Array.isArray(dados)) {
-          setMaterialDoacoes(dados);
-        } else {
-        }
-      });
-  }, []);
+        .then((resposta) => {
+          return resposta.json();
+        })
+        .then((dados) => {
+          if (Array.isArray(dados)) {
+            setMaterialDoacoes(dados);
+          } 
+        });      
+    }
+  }, [exibirTabela]);
 
 
 

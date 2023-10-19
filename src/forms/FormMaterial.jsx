@@ -38,6 +38,7 @@ export default function FormMaterial(props) {
         }).then((resposta) => {
           window.alert("O material foi registrado no banco de dados!");
           props.exibirTabela(true);
+          
           return resposta.json();
         });
       } else {

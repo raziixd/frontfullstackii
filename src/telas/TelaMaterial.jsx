@@ -8,7 +8,7 @@ import { urlBase} from "../utilitarios/definicoes";
 
 export default function TelaMaterial(props) {
   const [exibirTabela, setExibirTabela] = useState(true);
-  const [materiais, setDoacoes] = useState([]);
+  const [materiais, setMateriais] = useState([]);
   const [modoEdicao, setModoEdicao] = useState(false);
   const [usuarioEdicao, setUsuarioEdicao] = useState({
     id:"",
@@ -53,19 +53,20 @@ export default function TelaMaterial(props) {
   }
 
   useEffect(() => {
-    fetch(urlBase, {
-      method: "GET",
-    })
-      .then((resposta) => {
-        return resposta.json();
+    if(exibirTabela){
+      fetch(urlBase, {
+        method: "GET",
       })
-      .then((dados) => {
-        if (Array.isArray(dados)) {
-          setDoacoes(dados);
-        } else {
-        }
-      });
-  }, []);
+        .then((resposta) => {
+          return resposta.json();
+        })
+        .then((dados) => {
+          if (Array.isArray(dados)) {
+            setMateriais(dados);
+          } 
+        });      
+    }
+  }, [exibirTabela]);
 
 
 
@@ -78,7 +79,7 @@ export default function TelaMaterial(props) {
         {exibirTabela ? (
           <TabelaMaterial
             listaMateriais={materiais}
-            setDoacoes={setDoacoes}
+            setMateriais={setMateriais}
             exibirTabela={setExibirTabela}
             editar={prepararTela}
             deletar={deletarUsuario}
@@ -89,7 +90,7 @@ export default function TelaMaterial(props) {
             <FormMaterial
               listaMateriais={materiais}
               exibirTabela={setExibirTabela}
-              setDoacoes={setDoacoes}
+              setMateriais={setMateriais}
               editar={prepararTela}
               modoEdicao={modoEdicao}
               setModoEdicao={setModoEdicao}

@@ -90,7 +90,7 @@ useEffect(()=>{
   //   fetchData();
   // }, []);
 
-
+// eslint-disable-next-line
   const [doacaoSelecionado, setDoacaoSelecionado] = useState({});
   const [listaDoacoes, setListaDoacoes] = useState([]);
   
@@ -110,7 +110,7 @@ useEffect(()=>{
     };
     fetchData();
   }, []);
-  
+  // eslint-disable-next-line
   const [materialSelecionado, setMaterialSelecionado] = useState({});
   const [listaMaterial, setListaMaterial] = useState([]);
   
@@ -152,7 +152,7 @@ useEffect(()=>{
               dados={listaDoacoes}
               campoChave={"id"}
               campoBusca={"valorDoado"}
-              funcaoSelecao={() => {
+              funcaoSelecao={(doacaoSelecionado) => {
                 setDoacaoSelecionado(doacaoSelecionado);
                 setMaterialDoacao({ ...materialdoacao, doacao : doacaoSelecionado });
               }}
@@ -166,7 +166,7 @@ useEffect(()=>{
               dados={listaMaterial}
               campoChave={"id"}
               campoBusca={"item"}
-              funcaoSelecao={() => {
+              funcaoSelecao={(materialSelecionado) => {
                 setMaterialSelecionado(materialSelecionado);
                 setMaterialDoacao({ ...materialdoacao, material : materialSelecionado });
               }}
